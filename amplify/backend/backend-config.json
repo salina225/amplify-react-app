@@ -5,5 +5,21 @@
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
     }
+  },
+  "api": {
+    "cryptoapi225": {
+      "service": "API Gateway",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [
+        {
+          "category": "function",
+          "resourceName": "cryptoappda88e166",
+          "attributes": [
+            "Name",
+            "Arn"
+          ]
+        }
+      ]
+    }
   }
 }
