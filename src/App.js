@@ -20,17 +20,21 @@ const App = () => {
 
   // Define function to all API
   const  fetchCoins =  async () => {
-    updateLoading(true);
 
-    const { limit, start } = input;
-    const data = await API.get('cryptoapi225', `/coins?limit=${limit}&start=${start}`);
+    try {
+      updateLoading(true);
 
-    updateCoins(data.coins);
-    //coins = data.coins;
-    console.log(coins);
+      const { limit, start } = input;
+      const data = await API.get('cryptoapi225', `/coins?limit=${limit}&start=${start}`);
+      updateCoins(data.coins);
 
-  updateLoading(false);
-  };
+      updateLoading(false);
+    }
+
+    catch (err) {
+      console.error(err);
+    }
+};
 
   // Call fetchCoins function when component loads
   useEffect(
@@ -53,6 +57,8 @@ const App = () => {
 
 const [loading, updateLoading] = useState(true);
 
+
+
   return (
     <div className="App">
 
@@ -72,10 +78,10 @@ const [loading, updateLoading] = useState(true);
     Fetch Coins
   </button>
 
-  {loading && <h2> Loading... </h2>}
+  {loading && <h2>Loading...</h2>}
 
   {
-      !loading &&
+        !loading &&
         coins.map(
           (coin, index) => (
           <div
