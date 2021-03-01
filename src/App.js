@@ -10,6 +10,7 @@ import { API } from 'aws-amplify';
 
 import logo from './logo.svg';
 import './App.css';
+import { GitHubBornOn } from './GitHubBornOn';
 
 const App = () => {
 
@@ -60,6 +61,7 @@ const [loading, updateLoading] = useState(true);
 
 
   return (
+    <>
     <div className="App">
 
     <input
@@ -97,6 +99,8 @@ const [loading, updateLoading] = useState(true);
       )
     }
     </div>
+    <GitHubBornOn />
+    </>
   );
 }
 
